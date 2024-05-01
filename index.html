@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zain's Song Redirector</title>
+<style>
+        /* Styles for input fields */
+        .display input[type="tel"] {
+        width: 300px; /* Adjust width as needed */
+        height: 40px; /* Adjust height as needed */
+        font-size: 16px;
+        padding: 5px 10px;
+        margin-bottom: 10px; /* Add space below input field */
+        border: none;
+        border-radius: 5px;
+    }
+
+    /* Styles for buttons */
+    input[type="button"], input[type="reset"] {
+        width: 200px; /* Adjust width as needed */
+        height: 40px; /* Adjust height as needed */
+        font-size: 16px;
+        margin-top: 10px; /* Add space above buttons */
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color: #ffffff; /* White background */
+        color: #000000; /* Black text color */
+        transition: transform 0.3s, box-shadow 0.3s;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    input[type="button"]:hover, input[type="reset"]:hover {
+        transform: scale(1.1);
+    }
+
+    body{
+        background-image: url("https://i.pinimg.com/736x/d3/d5/e5/d3d5e566b6634d3fbd797396228a5b2e.jpg");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+         align-items: center;
+        height: 100vh;
+        margin: 0;
+    }        
+
+    .container {
+        position: relative;
+        z-index: 1;
+        background-color: rgba(255, 255, 255, 0.5);
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+</style>
+</head>
+
+<body>
+<div class="container">
+    <div class="song-redirectory">
+        <form>
+            <select id="streamingWebsites"> <!-- This gives it an ID for later, when I wrote that the variable will check this ID's value. -->
+                <option value="Please Select a Streaming Website">Please Select a Streaming Website</option>
+                <option value="https://play.anghami.com/search/">Anghami</option>
+                <option value="https://open.spotify.com/search/">Spotify</option>
+                
+                <!-- This makes a dropdown menu with these country codes -->
+            </select>
+
+            <div class="display">
+                <input type="tel" name="songNameInput" id="songNameInput" placeholder="Enter Song Name">
+
+            </div>
+            <div>
+                <input type="button" id="generateButton" value="Take Me To Song" onclick="generateLink()"> 
+                <input type="reset" id="resetButton" value="Reset Typing space">
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+<script>
+    function generateLink() {
+        console.log("take to song button clicked")
+        let streamingWebsite = document.getElementById("streamingWebsites").value;
+        let songName = document.getElementById("songNameInput").value;
+
+        
+        if (streamingWebsite === "Please Select a Streaming Website") {
+            console.log('User Did not select anything (STREAMINGWEBSITE )');
+            alert("Please Select A Streaming Website.");
+        } else {
+            console.log('User Selected a Streaming Website')
+            if (streamingWebsite === "https://play.anghami.com/search/") {
+                console.log('User Selected Anghami')
+
+                let baseUrl = "https://play.anghami.com/search/"
+                let fullUrl = baseUrl + songName; // Update this line to concatenate the song name
+                console.log(fullUrl)
+                window.location.href = fullUrl;
+            } else {
+                console.log("user selected spotify")
+                let baseUrl = "https://open.spotify.com/search/"
+                let fullUrl = baseUrl + songName
+                console.log(fullUrl)
+                window.location.href = fullUrl;
+            }
+        }
+    }
+</script>
+</html>
