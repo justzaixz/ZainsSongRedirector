@@ -6,7 +6,7 @@
     <title>Zain's Song Redirector</title>
 <style>
         /* Styles for input fields */
-        .display input[type="tel"] {
+        .display input[type="text"] {
         width: 300px; /* Adjust width as needed */
         height: 40px; /* Adjust height as needed */
         font-size: 16px;
@@ -70,7 +70,8 @@
             </select>
 
             <div class="display">
-                <input type="tel" name="songNameInput" id="songNameInput" placeholder="Enter Song Name">
+                <input type = "text" name="songNameInput" id="songNameInput" placeholder="Enter Song Name">
+                <input type = "text" name="artistNameInput" id="artistNameInput" placeholder="Enter Artist Name">
 
             </div>
             <div>
@@ -86,7 +87,12 @@
         console.log("take to song button clicked")
         let streamingWebsite = document.getElementById("streamingWebsites").value;
         let songName = document.getElementById("songNameInput").value;
-
+        let artistName = document.getElementById("artistNameInput").value;
+        var byvar = "%20by%20"
+            // Remove spaces from the artistInput
+            artistName = artistName.replace(/\s/g, '%20');
+            // Remove spaces from the songInput
+            songName = songName.replace(/\s/g, '%20');
         
         if (streamingWebsite === "Please Select a Streaming Website") {
             console.log('User Did not select anything (STREAMINGWEBSITE )');
@@ -97,13 +103,13 @@
                 console.log('User Selected Anghami')
 
                 let baseUrl = "https://play.anghami.com/search/"
-                let fullUrl = baseUrl + songName; // Update this line to concatenate the song name
+                let fullUrl = baseUrl + songName  + byvar + artistName;
                 console.log(fullUrl)
                 window.location.href = fullUrl;
             } else {
                 console.log("user selected spotify")
                 let baseUrl = "https://open.spotify.com/search/"
-                let fullUrl = baseUrl + songName
+                let fullUrl = baseUrl + songName + byvar + artistName
                 console.log(fullUrl)
                 window.location.href = fullUrl;
             }
