@@ -69,7 +69,7 @@ function gotolikes() {
         alert("Please Select A Streaming Website.");
     } else {
         console.log('User Selected a Streaming Website')
-        if (streamingWebsite === "https://play.anghami.com/likes") {
+        if (streamingWebsite === "https://play.anghami.com/search/") {
             console.log('User Selected Anghami for Likes')
             let fullUrl = "https://play.anghami.com/likes";
             window.location.href = fullUrl;
