@@ -4,60 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zain's Song Redirector</title>
-<style>
-        /* Styles for input fields */
-        .display input[type="text"] {
-        width: 300px; /* Adjust width as needed */
-        height: 40px; /* Adjust height as needed */
-        font-size: 16px;
-        padding: 5px 10px;
-        margin-bottom: 10px; /* Add space below input field */
-        border: none;
-        border-radius: 5px;
-    }
-
-    /* Styles for buttons */
-    input[type="button"], input[type="reset"] {
-        width: 200px; /* Adjust width as needed */
-        height: 40px; /* Adjust height as needed */
-        font-size: 16px;
-        margin-top: 10px; /* Add space above buttons */
-        cursor: pointer;
-        border: none;
-        border-radius: 5px;
-        background-color: #ffffff; /* White background */
-        color: #000000; /* Black text color */
-        transition: transform 0.3s, box-shadow 0.3s;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6);
-    }
-
-    input[type="button"]:hover, input[type="reset"]:hover {
-        transform: scale(1.1);
-    }
-
-    body{
-        background-image: url("https://i.pinimg.com/736x/d3/d5/e5/d3d5e566b6634d3fbd797396228a5b2e.jpg");
-        background-size: cover;
-        background-position: center;
-        display: flex;
-        justify-content: center;
-         align-items: center;
-        height: 100vh;
-        margin: 0;
-    }        
-
-    .container {
-        position: relative;
-        z-index: 1;
-        background-color: rgba(255, 255, 255, 0.5);
-        padding: 20px;
-        border-radius: 10px;
-    }
-
-</style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+
+
+    <button class="button" onclick="gotolikes()">
+      Go to My Likes
+      <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+        <path
+          fill-rule="evenodd"
+          d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+          clip-rule="evenodd"
+        ></path>
+      </svg>
+    </button>
+
+
+
 <div class="container">
     <div class="song-redirectory">
         <form>
@@ -70,8 +35,21 @@
             </select>
 
             <div class="display">
-                <input type = "text" name="songNameInput" id="songNameInput" placeholder="Enter Song Name">
-                <input type = "text" name="artistNameInput" id="artistNameInput" placeholder="Enter Artist Name">
+                <div class="form-control">
+                    <input type="value" required="" name="songNameInput" id="songNameInput">
+                    <label>
+                        <span style="transition-delay:0ms">S</span><span style="transition-delay:50ms">o</span><span style="transition-delay:100ms">n</span><span style="transition-delay:150ms">g</span><span style="transition-delay:200ms"> </span><span style="transition-delay:250ms">n</span><span style="transition-delay:300ms">a</span><span style="transition-delay:350ms">m</span><span style="transition-delay:400ms">e</span>
+                    </label>
+                </div>
+
+                <div class="display">
+                    <div class="form-control">
+                        <input type="value" required="" name="artistNameInput" id="artistNameInput">
+                        <label>
+                            <span style="transition-delay:0ms">A</span><span style="transition-delay:50ms">r</span><span style="transition-delay:100ms">t</span><span style="transition-delay:130ms">i</span><span style="transition-delay:160ms">s</span><span style="transition-delay:190ms">t</span><span style="transition-delay:210ms">'</span><span style="transition-delay:240ms">s</span><span style="transition-delay:270ms"> </span><span style="transition-delay:300ms">n</span><span style="transition-delay:330ms">a</span><span style="transition-delay:360ms">m</span><span style="transition-delay:390ms">e</span>
+                        </label>
+                    </div>
+
 
             </div>
             <div>
@@ -81,68 +59,7 @@
         </form>
     </div>
 </div>
+<script src="scripts.js"></script>
 </body>
-<script>
-    function generateLink() {
-        console.log("take to song button clicked")
-        let streamingWebsite = document.getElementById("streamingWebsites").value;
-        let songName = document.getElementById("songNameInput").value;
-        let artistName = document.getElementById("artistNameInput").value;
-        var byvar = "%20by%20"
-            // Remove spaces from the artistInput
-            artistName = artistName.replace(/\s/g, '%20');
-            // Remove spaces from the songInput
-            songName = songName.replace(/\s/g, '%20');
-        
-        if (streamingWebsite === "Please Select a Streaming Website") {
-            console.log('User Did not select anything (STREAMINGWEBSITE )');
-            alert("Please Select A Streaming Website.");
-        } else {
-            console.log('User Selected a Streaming Website')
-            if (streamingWebsite === "https://play.anghami.com/search/") {
-                console.log('User Selected Anghami')
-                if (songName === null || songName === "") { // Check if songName is null or empty
-                    let baseUrl = "https://play.anghami.com/search/";
-                    let fullUrl = baseUrl + artistName;
-                    console.log(fullUrl);
-                    window.location.href = fullUrl;
-                } else {
-                        if (artistName === null || artistName === "") { // Check if artistName is null or empty
-                        let baseUrl = "https://play.anghami.com/search/";
-                        let fullUrl = baseUrl + songName;
-                        window.location.href = fullUrl;
-                        console.log(fullUrl);
-                        } else {
-                                let baseUrl = "https://play.anghami.com/search/";
-                                let fullUrl = baseUrl + songName + byvar + artistName;
-                                console.log(fullUrl);
-                                window.location.href = fullUrl;
-    }
-}
-  
-            
-            } else {
-                if (songName === null || songName === "") { // Check if songName is null or empty
-                let baseUrl = "https://open.spotify.com/search/";
-                let fullUrl = baseUrl + artistName;
-                console.log(fullUrl);
-                window.location.href = fullUrl;
-                } else {
-                        if (artistName === null || artistName === "") { // Check if artistName is null or empty
-                        let baseUrl = "https://open.spotify.com/search/";
-                        let fullUrl = baseUrl + songName;
-                        window.location.href = fullUrl;
-                        console.log(fullUrl);
-                    }   else {
-                        let baseUrl = "https://open.spotify.com/search/";
-                        let fullUrl = baseUrl + songName + byvar + artistName;
-                        console.log(fullUrl);
-                        window.location.href = fullUrl;
-    }
-}
 
-            }
-        }
-    }
-</script>
 </html>
